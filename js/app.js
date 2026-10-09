@@ -1,4 +1,4 @@
-import { applyFilters, clearSelection } from './table.js';
+import { applyFilters, clearSelection } from './table.js?v=5';
 
 const modeButtons = [...document.querySelectorAll('.mode-button')];
 const viewPanels = [...document.querySelectorAll('[data-view-panel]')];
@@ -23,6 +23,14 @@ const state = {
   period: '',
   block: ''
 };
+
+function resetControls() {
+  if (searchInput) searchInput.value = '';
+  if (groupFilter) groupFilter.value = '';
+  if (periodFilter) periodFilter.value = '';
+  if (blockFilter) blockFilter.value = '';
+  typeButtons.forEach(button => button.classList.toggle('is-active', button.dataset.value === 'all'));
+}
 
 function refreshFilters() {
   applyFilters(state);
@@ -76,19 +84,16 @@ clearButton?.addEventListener('click', () => {
   state.group = '';
   state.period = '';
   state.block = '';
-
-  if (searchInput) searchInput.value = '';
-  if (groupFilter) groupFilter.value = '';
-  if (periodFilter) periodFilter.value = '';
-  if (blockFilter) blockFilter.value = '';
-  typeButtons.forEach(button => button.classList.toggle('is-active', button.dataset.value === 'all'));
-
+  resetControls();
   clearSelection();
   refreshFilters();
 });
 
 document.querySelector('[data-focus-search]')?.addEventListener('click', () => searchInput?.focus());
-
 document.querySelector('[data-jump-filter="group"]')?.addEventListener('click', () => groupFilter?.focus());
 document.querySelector('[data-jump-filter="period"]')?.addEventListener('click', () => periodFilter?.focus());
 document.querySelector('[data-jump-filter="block"]')?.addEventListener('click', () => blockFilter?.focus());
+
+// Browsers can restore form values after reload. Start each session from the intended neutral state.
+resetControls();
+refreshFilters();
