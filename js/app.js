@@ -1,4 +1,4 @@
-import { applyFilters, clearSelection } from './table.js?v=9';
+import { applyFilters, clearSelection } from './table.js?v=11';
 
 const modeButtons = [...document.querySelectorAll('.mode-button')];
 const viewPanels = [...document.querySelectorAll('[data-view-panel]')];
