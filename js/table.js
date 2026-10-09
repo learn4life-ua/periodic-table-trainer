@@ -3,6 +3,22 @@ import { elementDetails } from '../data/details.js?v=8';
 
 const detailsByNumber = new Map(elementDetails.map(item => [item.n, item]));
 
+const elementCorrections = new Map([
+  [28, { name: 'Нікол' }],
+  [40, { mass: '91,222' }],
+  [64, { mass: '157,249' }]
+]);
+
+function normalizeMass(mass) {
+  return /^\(\d+\)$/.test(mass) ? `[${mass.slice(1, -1)}]` : mass;
+}
+
+function normalizeElement(element) {
+  const correction = elementCorrections.get(element.number) || {};
+  const merged = { ...element, ...correction };
+  return { ...merged, mass: normalizeMass(merged.mass) };
+}
+
 const table = document.querySelector('#periodicTable');
 const panel = document.querySelector('#elementPanel');
 const legend = document.querySelector('#legend');
@@ -37,28 +53,29 @@ function fBlockPosition(element) {
 }
 
 function createElementButton(element, position) {
+  const shown = normalizeElement(element);
   const button = document.createElement('button');
   button.type = 'button';
-  button.className = `element cat-${element.category}`;
-  button.dataset.number = String(element.number);
-  button.dataset.name = element.name.toLocaleLowerCase('uk');
-  const detail = detailsByNumber.get(element.number);
+  button.className = `element cat-${shown.category}`;
+  button.dataset.number = String(shown.number);
+  button.dataset.name = shown.name.toLocaleLowerCase('uk');
+  const detail = detailsByNumber.get(shown.number);
   button.dataset.alt = (detail?.alt || '').toLocaleLowerCase('uk');
-  button.dataset.symbol = element.symbol.toLocaleLowerCase('uk');
-  button.dataset.category = element.category;
-  button.dataset.period = String(element.period);
-  button.dataset.group = String(element.group);
-  button.dataset.block = element.block;
+  button.dataset.symbol = shown.symbol.toLocaleLowerCase('uk');
+  button.dataset.category = shown.category;
+  button.dataset.period = String(shown.period);
+  button.dataset.group = String(shown.group);
+  button.dataset.block = shown.block;
   button.style.gridColumn = String(position.column);
   button.style.gridRow = String(position.row);
-  button.setAttribute('aria-label', `${element.name}, ${element.symbol}, порядковий номер ${element.number}`);
+  button.setAttribute('aria-label', `${shown.name}, ${shown.symbol}, порядковий номер ${shown.number}`);
   button.innerHTML = `
-    <span class="element-number">${element.number}</span>
-    <span class="element-symbol">${element.symbol}</span>
-    <span class="element-name">${element.name}</span>
-    <span class="element-mass">${element.mass}</span>
+    <span class="element-number">${shown.number}</span>
+    <span class="element-symbol">${shown.symbol}</span>
+    <span class="element-name">${shown.name}</span>
+    <span class="element-mass">${shown.mass}</span>
   `;
-  button.addEventListener('click', () => selectElement(element, button));
+  button.addEventListener('click', () => selectElement(shown, button));
   table.append(button);
 }
 
@@ -214,6 +231,7 @@ function startAtomModel(element) {
 }
 
 function selectElement(element, button) {
+  element = normalizeElement(element);
   const detail = detailsByNumber.get(element.number) || {};
   const enriched = {
     ...element,
@@ -296,7 +314,7 @@ function selectElementByNumber(number) {
   const element = elements.find(item => item.number === number);
   const button = table.querySelector(`.element[data-number="${number}"]`);
   if (!element || !button) return;
-  selectElement(element, button);
+  selectElement(normalizeElement(element), button);
   button.focus({ preventScroll: true });
 }
 
