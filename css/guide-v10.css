@@ -213,6 +213,64 @@
 }
 .guide-action:hover { filter: brightness(1.03); }
 
+/* Table text alignment tuning */
+.element {
+  display: grid;
+  grid-template-rows: 8px 1fr 10px 7px;
+  align-items: center;
+  justify-items: center;
+  row-gap: 0;
+  overflow: hidden;
+  line-height: 1;
+}
+.element-number {
+  align-self: start;
+  justify-self: start;
+  line-height: 1;
+}
+.element-symbol {
+  align-self: center;
+  line-height: .95;
+  margin: 0;
+}
+.element-name {
+  align-self: center;
+  width: 100%;
+  min-height: 0;
+  margin: 0;
+  overflow: hidden;
+  color: inherit;
+  font-size: .44rem;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -.015em;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transform: translateY(-1px);
+}
+.element-mass {
+  align-self: end;
+  margin: 0;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+.series-jump .element-name {
+  font-size: .39rem;
+  transform: none;
+}
+
+@media (max-width: 1500px) and (min-width: 1051px) {
+  .element {
+    grid-template-rows: 7px 1fr 9px 6px;
+  }
+  .element-name {
+    font-size: .405rem;
+    letter-spacing: -.025em;
+  }
+  .element-mass { font-size: .35rem; }
+}
+
 @media (max-width: 980px) {
   .guide-hero { grid-template-columns: 1fr; }
   .guide-hero-badge { justify-content: start; }
