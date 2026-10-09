@@ -292,16 +292,44 @@ function selectElement(element, button) {
   startAtomModel(enriched);
 }
 
-export function clearSelection() {
+function selectElementByNumber(number) {
+  const element = elements.find(item => item.number === number);
+  const button = table.querySelector(`.element[data-number="${number}"]`);
+  if (!element || !button) return;
+  selectElement(element, button);
+  button.focus({ preventScroll: true });
+}
+
+function renderEmptyState() {
   stopAtomAnimation?.();
-  table.querySelectorAll('.element').forEach(node => node.classList.remove('is-selected', 'is-match', 'is-dimmed'));
   panel.innerHTML = `
-    <div class="empty-state">
-      <div class="empty-symbol">?</div>
+    <div class="empty-state empty-state-start">
+      <div class="starter-atom" aria-hidden="true">
+        <span class="starter-orbit orbit-one"><i></i></span>
+        <span class="starter-orbit orbit-two"><i></i></span>
+        <span class="starter-orbit orbit-three"><i></i></span>
+        <span class="starter-core">⚛</span>
+      </div>
+      <p class="starter-kicker">Почніть дослідження</p>
       <h3>Оберіть елемент</h3>
-      <p>Натисніть на клітинку таблиці, щоб побачити основні відомості та модель будови атома.</p>
+      <p>Натисніть на клітинку таблиці або спробуйте один із прикладів.</p>
+      <div class="starter-picks" aria-label="Швидкий вибір елемента">
+        <button type="button" data-quick-element="6"><strong>C</strong><span>Карбон</span></button>
+        <button type="button" data-quick-element="8"><strong>O</strong><span>Оксиген</span></button>
+        <button type="button" data-quick-element="26"><strong>Fe</strong><span>Ферум</span></button>
+      </div>
+      <small class="starter-hint">У картці елемента побачите електронну будову, ступені окиснення, цікавий факт і динамічну модель атома.</small>
     </div>
   `;
+
+  panel.querySelectorAll('[data-quick-element]').forEach(button => {
+    button.addEventListener('click', () => selectElementByNumber(Number(button.dataset.quickElement)));
+  });
+}
+
+export function clearSelection() {
+  table.querySelectorAll('.element').forEach(node => node.classList.remove('is-selected', 'is-match', 'is-dimmed'));
+  renderEmptyState();
 }
 
 export function applyFilters({ query = '', type = 'all', group = '', period = '', block = '' } = {}) {
@@ -332,3 +360,4 @@ export function applyFilters({ query = '', type = 'all', group = '', period = ''
 
 renderLegend();
 renderTable();
+renderEmptyState();
