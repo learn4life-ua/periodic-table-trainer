@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Інтерактивна періодична система хімічних елементів і тренажер для навчання.">
+  <title>Періодична система. Інтерактивний тренажер</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#top" aria-label="На початок сторінки">
+        <span class="brand-mark">Pt</span>
+        <span class="brand-text">
+          <strong>Періодична система</strong>
+          <small>Інтерактивний тренажер</small>
+        </span>
+      </a>
+      <nav class="mode-nav" aria-label="Режими роботи">
+        <button class="mode-button is-active" type="button" data-view="table">Таблиця</button>
+        <button class="mode-button" type="button" data-view="explore">Досліджуй</button>
+        <button class="mode-button" type="button" data-view="trainer">Тренажер</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <p class="eyebrow">Хімія без механічного заучування</p>
+          <h1>Досліджуйте елементи й одразу тренуйте знання</h1>
+          <p class="hero-copy">Натискайте на елементи, переглядайте їхнє положення в Періодичній системі, порівнюйте групи й періоди та виконуйте тренувальні завдання.</p>
+        </div>
+        <div class="hero-card" aria-hidden="true">
+          <span class="hero-number">8</span>
+          <strong>O</strong>
+          <span>Оксиген</span>
+          <small>15,999</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="workspace shell" data-view-panel="table">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Інтерактивна таблиця</p>
+          <h2>Періодична система хімічних елементів</h2>
+        </div>
+        <div class="table-tools">
+          <label class="search-box">
+            <span class="sr-only">Пошук елемента</span>
+            <input id="elementSearch" type="search" placeholder="Назва, символ або номер">
+          </label>
+          <button id="clearSelection" class="secondary-button" type="button">Скинути</button>
+        </div>
+      </div>
+
+      <div class="legend" id="legend" aria-label="Умовні позначення"></div>
+
+      <div class="table-layout">
+        <div class="periodic-scroll" tabindex="0" aria-label="Періодична система з горизонтальним прокручуванням на малих екранах">
+          <div id="periodicTable" class="periodic-table" aria-live="polite"></div>
+        </div>
+
+        <aside id="elementPanel" class="element-panel" aria-live="polite">
+          <div class="empty-state">
+            <div class="empty-symbol">?</div>
+            <h3>Оберіть елемент</h3>
+            <p>Натисніть на клітинку таблиці, щоб побачити основні відомості.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="workspace shell is-hidden" data-view-panel="explore">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Режим дослідження</p>
+          <h2>Побачте закономірності в таблиці</h2>
+        </div>
+      </div>
+      <div class="explore-card">
+        <p>Цей режим буде наступним етапом: підсвічування груп, періодів, родин елементів та s-, p-, d-, f-блоків.</p>
+      </div>
+    </section>
+
+    <section class="workspace shell is-hidden" data-view-panel="trainer">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Тренажер</p>
+          <h2>Тренуйтеся без оцінок і реєстрації</h2>
+        </div>
+      </div>
+      <div id="trainerApp" class="trainer-card">
+        <p>Модуль тренажера підготовлено окремо. Після перевірки таблиці додамо випадкові завдання з миттєвим поясненням відповіді.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <p>Навчальний некомерційний проєкт. Дані призначені для тренування та повторення шкільного курсу хімії.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
