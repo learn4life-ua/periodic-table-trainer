@@ -9,6 +9,9 @@ const categoryOrder = [
   'halogen','noble','lanthanide','actinide','unknown'
 ];
 
+const metalCategories = new Set(['alkali','alkaline','transition','post-transition','lanthanide','actinide']);
+const nonmetalCategories = new Set(['nonmetal','halogen','noble']);
+
 function makeLabel(text, className, column, row, span = 1) {
   const node = document.createElement('div');
   node.className = className;
@@ -24,12 +27,8 @@ function mainPosition(element) {
 }
 
 function fBlockPosition(element) {
-  if (element.category === 'lanthanide') {
-    return { column: 4 + (element.number - 57), row: 10 };
-  }
-  if (element.category === 'actinide') {
-    return { column: 4 + (element.number - 89), row: 11 };
-  }
+  if (element.category === 'lanthanide') return { column: 4 + (element.number - 57), row: 10 };
+  if (element.category === 'actinide') return { column: 4 + (element.number - 89), row: 11 };
   return null;
 }
 
@@ -85,19 +84,12 @@ function renderLegend() {
 
 function renderTable() {
   table.innerHTML = '';
-
-  for (let group = 1; group <= 18; group += 1) {
-    makeLabel(String(group), 'group-label', group + 1, 1);
-  }
-  for (let period = 1; period <= 7; period += 1) {
-    makeLabel(String(period), 'period-label', 1, period + 1);
-  }
-
+  for (let group = 1; group <= 18; group += 1) makeLabel(String(group), 'group-label', group + 1, 1);
+  for (let period = 1; period <= 7; period += 1) makeLabel(String(period), 'period-label', 1, period + 1);
   makeLabel('Лантаноїди', 'series-label', 1, 10, 3);
   makeLabel('Актиноїди', 'series-label', 1, 11, 3);
   createSeriesPlaceholder('57–71', 6, 'lanthanide');
   createSeriesPlaceholder('89–103', 7, 'actinide');
-
   elements.forEach(element => {
     const position = mainPosition(element) || fBlockPosition(element);
     if (position) createElementButton(element, position);
@@ -107,7 +99,6 @@ function renderTable() {
 function selectElement(element, button) {
   table.querySelectorAll('.element.is-selected').forEach(node => node.classList.remove('is-selected'));
   button.classList.add('is-selected');
-
   panel.innerHTML = `
     <div class="detail-head">
       <div class="detail-symbol cat-${element.category}">${element.symbol}</div>
@@ -140,21 +131,28 @@ export function clearSelection() {
   `;
 }
 
-export function searchElements(query) {
+export function applyFilters({ query = '', type = 'all', group = '', period = '', block = '' } = {}) {
   const q = query.trim().toLocaleLowerCase('uk');
   const buttons = [...table.querySelectorAll('.element[data-number]')];
 
-  if (!q) {
-    buttons.forEach(button => button.classList.remove('is-match', 'is-dimmed'));
-    return;
-  }
-
   buttons.forEach(button => {
-    const matches = button.dataset.name.includes(q)
+    const category = button.dataset.category;
+    const queryMatch = !q
+      || button.dataset.name.includes(q)
       || button.dataset.symbol === q
       || button.dataset.number === q;
-    button.classList.toggle('is-match', matches);
-    button.classList.toggle('is-dimmed', !matches);
+
+    const typeMatch = type === 'all'
+      || (type === 'metals' && metalCategories.has(category))
+      || (type === 'nonmetals' && nonmetalCategories.has(category));
+
+    const groupMatch = !group || button.dataset.group === group;
+    const periodMatch = !period || button.dataset.period === period;
+    const blockMatch = !block || button.dataset.block === block;
+    const match = queryMatch && typeMatch && groupMatch && periodMatch && blockMatch;
+
+    button.classList.toggle('is-match', match && (q || type !== 'all' || group || period || block));
+    button.classList.toggle('is-dimmed', !match);
   });
 }
 
