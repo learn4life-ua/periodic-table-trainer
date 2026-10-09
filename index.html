@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="css/style.css?v=7">
   <link rel="stylesheet" href="css/refinements.css?v=7">
   <link rel="stylesheet" href="css/panel-v8.css?v=9">
+  <link rel="stylesheet" href="css/guide-v10.css?v=10">
 </head>
 <body>
   <header class="site-header">
@@ -48,9 +49,7 @@
 
           <label class="filter-select">
             <span class="sr-only">Група</span>
-            <select id="groupFilter" autocomplete="off">
-              <option value="">Групи</option>
-            </select>
+            <select id="groupFilter" autocomplete="off"><option value="">Групи</option></select>
           </label>
           <label class="filter-select">
             <span class="sr-only">Період</span>
@@ -103,7 +102,6 @@
           <h2>Категорії елементів</h2>
           <div class="legend legend-dashboard" id="legend" aria-label="Умовні позначення"></div>
         </section>
-
         <section class="dashboard-card quick-card">
           <h2>Швидкі дії</h2>
           <div class="quick-actions">
@@ -113,7 +111,6 @@
             <button type="button" data-jump-filter="block"><strong>▦</strong><span>Електронні блоки</span></button>
           </div>
         </section>
-
         <section class="dashboard-card modes-card">
           <h2>Режими роботи</h2>
           <div class="mode-cards">
@@ -135,9 +132,117 @@
       <div id="trainerApp" class="trainer-card"><p>Наступним етапом тут з’являться випадкові навчальні завдання з миттєвим поясненням відповіді.</p></div>
     </section>
 
-    <section class="workspace shell is-hidden" data-view-panel="guide">
-      <div class="section-heading"><div><p class="eyebrow">Довідник</p><h1 class="table-title">Короткий довідник з хімічних елементів</h1></div></div>
-      <div class="trainer-card"><p>Довідник формуватиметься з тієї самої перевіреної бази елементів, що й таблиця та тренажер.</p></div>
+    <section class="workspace shell guide-workspace is-hidden" data-view-panel="guide">
+      <div class="guide-hero">
+        <div>
+          <p class="guide-kicker">Коротко і по суті</p>
+          <h1>Довідник з Періодичної системи</h1>
+          <p>Ключові поняття для роботи з таблицею: закон, групи й періоди, електронні блоки, конфігурації, ступені окиснення та категорії елементів.</p>
+        </div>
+        <div class="guide-hero-badge" aria-label="Структура Періодичної системи">
+          <div class="guide-stat"><strong>118</strong><span>елементів</span></div>
+          <div class="guide-stat"><strong>18</strong><span>груп</span></div>
+          <div class="guide-stat"><strong>7</strong><span>періодів</span></div>
+        </div>
+      </div>
+
+      <nav class="guide-nav" aria-label="Навігація довідником">
+        <a href="#guide-law">Періодичний закон</a>
+        <a href="#guide-groups">Групи й періоди</a>
+        <a href="#guide-blocks">Електронні блоки</a>
+        <a href="#guide-config">Електронна конфігурація</a>
+        <a href="#guide-oxidation">Ступені окиснення</a>
+        <a href="#guide-categories">Категорії</a>
+      </nav>
+
+      <div class="guide-main-grid">
+        <div class="guide-accordion">
+          <details class="guide-card" id="guide-law" open>
+            <summary><span class="guide-card-icon">∿</span>Періодичний закон</summary>
+            <div class="guide-card-body">
+              <p><strong>Властивості хімічних елементів і утворених ними речовин закономірно змінюються зі зростанням атомного номера.</strong> Атомний номер дорівнює заряду ядра і кількості протонів.</p>
+              <div class="guide-note">У сучасній Періодичній системі елементи розташовані за зростанням атомного номера, а не атомної маси.</div>
+            </div>
+          </details>
+
+          <details class="guide-card" id="guide-groups">
+            <summary><span class="guide-card-icon">▦</span>Групи й періоди</summary>
+            <div class="guide-card-body">
+              <p><strong>Періоди</strong> - горизонтальні ряди. Номер періоду пов'язаний із найвищим зайнятим енергетичним рівнем атома в основному стані.</p>
+              <p><strong>Групи</strong> - вертикальні стовпці. Елементи однієї групи часто мають подібні хімічні властивості, особливо для s- і p-елементів.</p>
+              <div class="guide-mini-grid">
+                <div class="guide-mini-card"><strong>1 група</strong><span>Лужні метали, крім Гідрогену.</span></div>
+                <div class="guide-mini-card"><strong>2 група</strong><span>Лужноземельні метали.</span></div>
+                <div class="guide-mini-card"><strong>17 група</strong><span>Галогени.</span></div>
+                <div class="guide-mini-card"><strong>18 група</strong><span>Благородні гази.</span></div>
+              </div>
+            </div>
+          </details>
+
+          <details class="guide-card" id="guide-blocks">
+            <summary><span class="guide-card-icon">◫</span>Електронні блоки s, p, d, f</summary>
+            <div class="guide-card-body">
+              <p>Блок визначають за типом підрівня, на якому розміщується диференціювальний електрон у прийнятій електронній конфігурації.</p>
+              <div class="guide-mini-grid">
+                <div class="guide-mini-card"><strong>s-блок</strong><span>Переважно групи 1-2; Гелій також належить до s-блоку.</span></div>
+                <div class="guide-mini-card"><strong>p-блок</strong><span>Переважно групи 13-18.</span></div>
+                <div class="guide-mini-card"><strong>d-блок</strong><span>Перехідні елементи, переважно групи 3-12.</span></div>
+                <div class="guide-mini-card"><strong>f-блок</strong><span>Лантаноїди та актиноїди.</span></div>
+              </div>
+            </div>
+          </details>
+
+          <details class="guide-card" id="guide-config">
+            <summary><span class="guide-card-icon">e⁻</span>Електронна конфігурація</summary>
+            <div class="guide-card-body">
+              <p>Електронна конфігурація показує розподіл електронів за енергетичними рівнями та підрівнями.</p>
+              <p>Приклад для Карбону:</p>
+              <span class="guide-formula">1s² 2s² 2p²</span>
+              <p>Сума верхніх індексів дорівнює числу електронів нейтрального атома: 2 + 2 + 2 = 6.</p>
+              <div class="guide-note">Для перехідних і внутрішньоперехідних елементів будова електронних оболонок складніша, тому не варто визначати число валентних електронів лише за номером групи.</div>
+            </div>
+          </details>
+
+          <details class="guide-card" id="guide-oxidation">
+            <summary><span class="guide-card-icon">±</span>Ступінь окиснення</summary>
+            <div class="guide-card-body">
+              <p>Ступінь окиснення - умовний заряд атома в сполуці, визначений у припущенні, що спільні електронні пари повністю зміщені до більш електронегативного атома.</p>
+              <p>Для Карбону типовими є <span class="guide-formula">-4, +2, +4</span>, для Оксигену найпоширеніший <span class="guide-formula">-2</span>.</p>
+              <div class="guide-note">Ступінь окиснення не слід ототожнювати з реальним зарядом атома чи йона.</div>
+            </div>
+          </details>
+
+          <details class="guide-card" id="guide-categories">
+            <summary><span class="guide-card-icon">◉</span>Категорії елементів</summary>
+            <div class="guide-card-body">
+              <p>Кольори нашої таблиці допомагають швидко розрізняти лужні та лужноземельні метали, перехідні й інші метали, металоїди, неметали, галогени, благородні гази, лантаноїди й актиноїди.</p>
+              <p>Межа між окремими категоріями не завжди абсолютно однозначна, особливо для надважких елементів, властивості яких досліджені неповно.</p>
+            </div>
+          </details>
+        </div>
+
+        <aside class="guide-side">
+          <section class="guide-side-card">
+            <h2>Електронні блоки</h2>
+            <p>Швидка візуальна підказка.</p>
+            <div class="guide-blocks">
+              <div class="guide-block-chip s">s</div>
+              <div class="guide-block-chip p">p</div>
+              <div class="guide-block-chip d">d</div>
+              <div class="guide-block-chip f">f</div>
+            </div>
+          </section>
+          <section class="guide-side-card">
+            <h2>Перевірте на таблиці</h2>
+            <p>Після правила одразу відкрийте Періодичну систему і знайдіть приклади.</p>
+            <button class="guide-action" type="button" data-open-view="table">Відкрити таблицю</button>
+          </section>
+          <section class="guide-side-card">
+            <h2>Як користуватися</h2>
+            <p>Розкривайте лише потрібний пункт. Довідник задуманий як швидка підказка, а не як підручник.</p>
+          </section>
+        </aside>
+      </div>
     </section>
   </main>
 
