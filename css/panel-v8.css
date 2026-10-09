@@ -1,0 +1,211 @@
+/* Rich element side panel v8 */
+
+.element-panel {
+  min-height: 535px;
+  max-height: calc(100vh - 124px);
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #c9d2e7 transparent;
+}
+.element-panel::-webkit-scrollbar { width: 7px; }
+.element-panel::-webkit-scrollbar-thumb { background: #c9d2e7; border-radius: 999px; }
+
+.detail-head-rich {
+  padding: 15px 16px 11px;
+  grid-template-columns: 76px minmax(0, 1fr);
+  gap: 13px;
+  border-bottom: 1px solid #edf0f7;
+}
+.detail-head-rich .detail-symbol {
+  width: 76px;
+  height: 76px;
+  font-size: 2.35rem;
+}
+.detail-title-wrap { min-width: 0; }
+.detail-title-wrap .eyebrow {
+  margin-bottom: 2px;
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+}
+.detail-title-wrap h3 {
+  margin: 0;
+  font-size: 1.36rem;
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: -.02em;
+}
+.detail-alt {
+  display: block;
+  margin-top: 2px;
+  color: #707a96;
+  font-size: .78rem;
+  font-weight: 400;
+}
+.category-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 7px;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: #f1f4fb;
+  color: #596581;
+  font-size: .64rem;
+  font-weight: 500;
+}
+.atomic-mass {
+  display: inline-block;
+  margin-left: 7px;
+  color: #8a93aa;
+  font-size: .64rem;
+  font-weight: 400;
+}
+
+.detail-compact-list {
+  padding: 5px 14px 0;
+  font-size: .76rem;
+}
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  min-height: 35px;
+  border-bottom: 1px solid #edf0f7;
+}
+.detail-row-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  color: #66738f;
+  font-weight: 400;
+}
+.detail-row strong {
+  color: #17213d;
+  font-size: .77rem;
+  font-weight: 650;
+  white-space: nowrap;
+}
+.detail-icon {
+  width: 15px;
+  color: #6256ee;
+  font-size: .86rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.detail-stack {
+  padding: 8px 0 9px;
+  border-bottom: 1px solid #edf0f7;
+}
+.detail-stack-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #66738f;
+  font-size: .72rem;
+  font-weight: 400;
+}
+.electron-config {
+  display: inline-block;
+  max-width: 100%;
+  padding: 4px 8px;
+  border: 1px solid #cfd8ff;
+  border-radius: 6px;
+  background: #f0f3ff;
+  color: #4338ca;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: .74rem;
+  font-weight: 600;
+  line-height: 1.25;
+  white-space: normal;
+}
+.shell-line {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.shell-chips { display: inline-flex; flex-wrap: wrap; gap: 5px; }
+.shell-chip {
+  min-width: 26px;
+  padding: 3px 7px;
+  border-radius: 6px;
+  background: #f1f4fa;
+  color: #263453;
+  text-align: center;
+  font-size: .72rem;
+  font-weight: 600;
+}
+.outer-electrons {
+  color: #8a93aa;
+  font-size: .66rem;
+  font-weight: 400;
+}
+.oxidation-stack { border-bottom: 0; }
+.oxidation-value {
+  color: #1f2946;
+  font-size: .78rem;
+  font-weight: 500;
+}
+.detail-muted { color: #8a93aa; font-size: .7rem; }
+
+.fact-box {
+  margin: 4px 14px 10px;
+  padding: 9px 10px 10px;
+  border: 1px solid #e3e8f2;
+  border-radius: 12px;
+  background: #f8fafc;
+}
+.fact-title {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 4px;
+  color: #1e2947;
+  font-size: .74rem;
+  font-weight: 600;
+}
+.fact-title span { color: #6256ee; }
+.fact-box p {
+  margin: 0;
+  color: #53617d;
+  font-size: .70rem;
+  line-height: 1.45;
+  font-weight: 400;
+}
+
+.atom-model-compact {
+  margin: 0 14px 13px;
+  padding: 5px 7px 6px;
+}
+.atom-model-compact canvas {
+  max-width: 270px;
+  max-height: 142px;
+}
+.atom-model-compact .atom-model-meta { font-size: .61rem; }
+
+@media (max-width: 1500px) and (min-width: 1051px) {
+  .detail-head-rich { grid-template-columns: 66px minmax(0, 1fr); padding: 12px 12px 9px; gap: 10px; }
+  .detail-head-rich .detail-symbol { width: 66px; height: 66px; font-size: 2rem; }
+  .detail-title-wrap h3 { font-size: 1.17rem; }
+  .detail-alt { font-size: .7rem; }
+  .category-badge, .atomic-mass { font-size: .58rem; }
+  .detail-compact-list { padding-inline: 11px; font-size: .70rem; }
+  .detail-row { min-height: 32px; }
+  .detail-row strong { font-size: .72rem; }
+  .detail-stack-label { font-size: .67rem; }
+  .electron-config { font-size: .68rem; }
+  .shell-chip { min-width: 23px; padding: 2px 6px; font-size: .67rem; }
+  .fact-box { margin-inline: 11px; }
+  .fact-box p { font-size: .65rem; }
+  .atom-model-compact { margin-inline: 11px; }
+}
+
+@media (max-width: 1050px) {
+  .element-panel { max-height: none; overflow: visible; }
+  .detail-head-rich { grid-template-columns: 82px 1fr; }
+  .detail-head-rich .detail-symbol { width: 82px; height: 82px; }
+  .detail-compact-list, .fact-box, .atom-model-compact { max-width: 560px; margin-left: auto; margin-right: auto; }
+  .detail-compact-list { width: calc(100% - 28px); }
+}
