@@ -34,7 +34,7 @@
         <label class="search-box control-search">
           <span class="sr-only">Пошук елемента</span>
           <span class="search-icon">⌕</span>
-          <input id="elementSearch" type="search" placeholder="Пошук елемента: назва, символ або номер...">
+          <input id="elementSearch" type="search" autocomplete="off" placeholder="Пошук елемента: назва, символ або номер...">
         </label>
 
         <div class="filter-row" aria-label="Фільтри таблиці">
@@ -44,13 +44,13 @@
 
           <label class="filter-select">
             <span class="sr-only">Група</span>
-            <select id="groupFilter">
+            <select id="groupFilter" autocomplete="off">
               <option value="">Групи</option>
             </select>
           </label>
           <label class="filter-select">
             <span class="sr-only">Період</span>
-            <select id="periodFilter">
+            <select id="periodFilter" autocomplete="off">
               <option value="">Періоди</option>
               <option value="1">1 період</option><option value="2">2 період</option><option value="3">3 період</option>
               <option value="4">4 період</option><option value="5">5 період</option><option value="6">6 період</option><option value="7">7 період</option>
@@ -58,7 +58,7 @@
           </label>
           <label class="filter-select">
             <span class="sr-only">Блок</span>
-            <select id="blockFilter">
+            <select id="blockFilter" autocomplete="off">
               <option value="">Блоки</option>
               <option value="s">s-блок</option><option value="p">p-блок</option><option value="d">d-блок</option><option value="f">f-блок</option>
             </select>
@@ -126,6 +126,6 @@
   </main>
 
   <footer class="site-footer"><div class="shell"><p>Навчальний некомерційний проєкт для тренування та повторення курсу хімії.</p></div></footer>
-  <script type="module" src="js/app.js?v=4"></script>
+  <script type="module" src="js/app.js?v=5"></script>
 </body>
 </html>
