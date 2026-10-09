@@ -5,8 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Інтерактивна періодична система хімічних елементів і тренажер для навчання.">
   <title>Періодична система. Інтерактивний тренажер</title>
-  <link rel="stylesheet" href="css/style.css?v=6">
-  <link rel="stylesheet" href="css/refinements.css?v=6">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=7">
+  <link rel="stylesheet" href="css/refinements.css?v=7">
 </head>
 <body>
   <header class="site-header">
@@ -57,9 +60,9 @@
             </select>
           </label>
           <label class="filter-select">
-            <span class="sr-only">Блок</span>
+            <span class="sr-only">Електронний блок</span>
             <select id="blockFilter" autocomplete="off">
-              <option value="">Блоки</option>
+              <option value="">Електронні блоки</option>
               <option value="s">s-блок</option><option value="p">p-блок</option><option value="d">d-блок</option><option value="f">f-блок</option>
             </select>
           </label>
@@ -77,7 +80,7 @@
           <div class="empty-state">
             <div class="empty-symbol">?</div>
             <h3>Оберіть елемент</h3>
-            <p>Натисніть на клітинку таблиці, щоб побачити основні відомості.</p>
+            <p>Натисніть на клітинку таблиці, щоб побачити основні відомості та модель будови атома.</p>
           </div>
         </aside>
       </div>
@@ -94,7 +97,7 @@
             <button type="button" data-focus-search><strong>⌕</strong><span>Пошук</span></button>
             <button type="button" data-jump-filter="group"><strong>◉</strong><span>Групи</span></button>
             <button type="button" data-jump-filter="period"><strong>▰</strong><span>Періоди</span></button>
-            <button type="button" data-jump-filter="block"><strong>▦</strong><span>Блоки</span></button>
+            <button type="button" data-jump-filter="block"><strong>▦</strong><span>Електронні блоки</span></button>
           </div>
         </section>
 
@@ -111,7 +114,7 @@
 
     <section class="workspace shell is-hidden" data-view-panel="explore">
       <div class="section-heading"><div><p class="eyebrow">Режим дослідження</p><h1 class="table-title">Досліджуй Періодичну систему</h1></div></div>
-      <div class="explore-card"><p>Тут додамо підсвічування груп, періодів, родин елементів, блоків і закономірностей зміни властивостей.</p></div>
+      <div class="explore-card"><p>Тут додамо підсвічування груп, періодів, родин елементів, електронних блоків і закономірностей зміни властивостей.</p></div>
     </section>
 
     <section class="workspace shell is-hidden" data-view-panel="trainer">
@@ -126,6 +129,6 @@
   </main>
 
   <footer class="site-footer"><div class="shell"><p>Навчальний некомерційний проєкт для тренування та повторення курсу хімії.</p></div></footer>
-  <script type="module" src="js/app.js?v=5"></script>
+  <script type="module" src="js/app.js?v=7"></script>
 </body>
 </html>
