@@ -1,4 +1,4 @@
-import { applyFilters, clearSelection } from './table.js?v=5';
+import { applyFilters, clearSelection } from './table.js?v=7';
 
 const modeButtons = [...document.querySelectorAll('.mode-button')];
 const viewPanels = [...document.querySelectorAll('[data-view-panel]')];
@@ -94,6 +94,5 @@ document.querySelector('[data-jump-filter="group"]')?.addEventListener('click', 
 document.querySelector('[data-jump-filter="period"]')?.addEventListener('click', () => periodFilter?.focus());
 document.querySelector('[data-jump-filter="block"]')?.addEventListener('click', () => blockFilter?.focus());
 
-// Browsers can restore form values after reload. Start each session from the intended neutral state.
 resetControls();
 refreshFilters();
